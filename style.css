@@ -1,0 +1,274 @@
+html{
+    scroll-behavior: smooth;
+    font-family: sans-serif;
+
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+    /*
+    background-image: url("img/spacebig.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    */
+    /*background-color: #001f3f;*/
+    background-color: #0C0032;
+    background-image: radial-gradient(#021027, #000000);
+
+}
+
+button{
+    display: block;
+    margin: auto;
+    cursor: pointer;
+    /*
+    background-color: #eb0000;
+    border: 1px solid #eb0000;
+    border-bottom: 4px solid #d20606;
+    */
+    background-color: #021027;
+    border: 5px solid rebeccapurple;
+    border-radius: 20px;
+    padding: 3%;
+    font: normal bold 20px Arial, Helvetica, sans-serif;
+    color: #FFF;
+    width: 20%;/**/
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+h1{
+    text-align: center;
+    font: normal bold 150px Arial, Helvetica, sans-serif;
+    color: #fbc02d;
+    /*text-shadow: 2px 2px #1c87c9;  */
+    text-shadow: 8px 8px black;
+    margin-top: 2%;
+    margin-bottom: 6%;
+}
+
+
+.textRouge{
+    color: #d50000;
+}
+
+#circles{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 5%;
+}
+
+#circles img{
+    /*width: 15%;*/
+}
+
+.circle{
+    margin-left: 1%;
+    margin-right: 1%;
+    border: solid #fdd835 9px;
+    background:#ffeb3b;
+    /*background: linear-gradient(blue, pink);*/
+    /*background: linear-gradient(white 0%, yellow);*/
+    border-radius:50%;
+    width:160px;
+    height:160px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+   /*box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;*/
+}
+
+#circleRouge{
+    border: solid red 9px;
+    background: linear-gradient(white 0%, yellow);
+    background:#d50000;
+}
+
+#choixJoueur, #choixReseau, #choixDifficulté{
+    display: none;
+}
+
+button:hover{
+    background-color: darkorange;
+}
+
+#titre h1 span:hover{
+    color: red;
+}
+#titre h1 .textRouge:hover{
+    color: #fbc02d;
+}
+
+section{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+article{
+    height: 100%;
+    /*margin-top: 2%;*/
+    display: none;
+    flex-direction: column;
+}
+
+#article{
+    width: 100%;
+}
+
+#article div{
+    width: 100%;
+}
+
+#articleHeader{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1%;
+    margin-bottom: 15%;
+}
+
+h2{
+    text-align: center;
+    color: white;
+}
+
+select{
+    padding: 4%;
+    display: flex;
+    margin: auto;
+    background-color: #021027;
+    color: white;
+    border: none;
+    border-radius: 20px;
+}
+
+.jouerActu{
+    width: 60% !important;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: auto;
+    background-color: white;
+    border-radius: 50px;
+    border: solid 10px #021027;
+
+    /*border-radius: 100%;*/
+}
+
+.jeton{
+    margin: 0%;
+    /*margin: 3%;*/
+    background-color: #021027;
+    border-radius: 50px;
+
+    /*border-radius: 100%;*/
+}
+
+.jouerActu h2{
+    color: black;
+}
+
+.jeton img{
+    display: flex;
+    margin: auto;
+}
+
+#articleSection{
+    display: flex;
+}
+
+#Time{
+    margin-top: 1.5% !important;
+    margin-bottom: 1.5% !important;
+    display: flex;
+    margin: auto;
+}
+
+#borderTime{
+    display: flex;
+    margin: auto;
+    border: solid red;
+    border-radius: 20%;
+    padding: 5px 50px 5px 50px;
+}
+
+p{
+    color: wheat;
+}
+
+#puissance4{
+    height: 94%;/*petit bug*/
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3%;
+
+    align-items: center;/**/
+}
+
+#champPuissance4{
+    width: 60%;
+    grid-column-gap: 20px;
+    border-radius: 5%;
+    padding: 0px 2% 0px 2%;
+    align-items: center;
+    background-color: #001f3f;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    /*
+    background-image: url("img/spacebig.png");
+    background-attachment: fixed;
+    background-size: cover;
+    */
+    height: 100%;
+}
+
+#champPuissance4 img{
+    width: 100%;
+}
+
+#champPuissance4 div{
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+#Player1, #Player2{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: white;
+    border-radius: 50px;
+    border: solid 10px #021027;
+}
+
+#champPlayer1{
+    margin-left: 2%;
+}
+
+#champPlayer2{
+    margin-right: 2%;
+}
+.cercle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #021027;
+}
+
+#Player1 img , #Player2 img{
+    width: 80%;
+}
+
+#champPlayer1 p, #champPlayer2 p{
+    display: flex;
+    justify-content: center;
+}
+
+.hoverColumn{
+    filter: brightness(1000%);
+}

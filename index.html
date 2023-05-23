@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/jetonsRouge.png" type="image/x-icon">
+
+    <title>**4</title>
+</head>
+<body>
+    <header>
+
+        <div id="titre">
+            <h1><span>P</span><span>u</span><span>i</span><span>s</span><span>s</span><span>a</span><span>n</span><span>c</span><span>e</span><span> </span><span class="textRouge">4</span></h1>
+        </div>
+        <!--
+        <svg viewBox="0 0 1200 400" 
+        xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <circle cx = "100" cy = "100" r = "80" fill = "orange" stroke = "navy" stroke-width = "10"/>
+       </svg>
+       -->
+       <div id="circles">
+        <!--
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle" id="circleRouge"></div>
+        -->
+        <img src="img/jetonsJaune.png" alt="jetonsJaune">
+        <img src="img/jetonsJaune.png" alt="jetonsJaune">
+        <img src="img/jetonsJaune.png" alt="jetonsJaune">
+        <img src="img/jetonsRouge.png" alt="jetonsRouge">
+
+       </div>
+
+       <div id=choixJoueur>
+        <button id="1joueur" class="joueur">1 joueur</button>
+        <button id="2joueur" class="joueur">2 joueurs</button>
+       </div>
+
+       <div id="choixReseau">
+        <button id="local" class="reseau">En ligne</button>
+        <button id="local" class="reseau">Local</button>
+       </div>
+        <div id="choixDifficulté">
+            <button id="Facile" class="difficulte">Facile</button>
+            <button id="Moyen" class="difficulte">Moyen</button>
+            <button id="Difficile" class="difficulte">Difficile</button>
+        </div>
+    </header>
+
+    <section>
+        <!--
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        -->
+        <div id="article">
+            <div id="articleHeader">
+                <div id="taillePlateau">
+                    <h2>Taille du Plateau</h2>
+                    <select id="choixTailleDuPlateau">
+                        <option value="7x6">7x6 (classique)</option>
+                        <option value="8x7">8x7 </option>
+                        <option value="9x7">9x7 </option>
+                        <option value="9x8">9x8 </option>
+                        <option value="6x5">6x5 </option>
+                    </select>
+                </div>
+                <div id="temps">
+                    <h2>Temps par tour</h2>
+                    <select id="choixDuTemps">
+                        <option value="10" >10 secondes</option>
+                        <option value="30"selected>30 secondes</option>
+                        <option value="50">50 secondes</option>
+                        <option value="Illimité">Illimité</option>
+                    </select>
+                </div>
+                <div id="commence">
+                    <h2>Qui commence</h2>
+                    <select id="choixQuiCommence">
+                        <option value="je" >Je commence</option>
+                        <option value="adversaire">L'advesrsaire commence</option>
+                        <option value="Aléatoire"selected >Aléatoire</option>
+                    </select>
+                </div>
+            </div>
+            <div id="articleSection">
+                <div id="choixCouleurJ1">
+                    <div class="jouerActu">
+                        <div class="jeton">
+                            <img src="img/jetonsRouge.png" alt="jetonRouge">
+                            <!--
+                            <h2>joueur 2</h2>
+                            -->
+                        </div>
+                        <!--
+                        <h2>joueur 2</h2>
+                        -->
+                    </div>
+                </div>
+                <div id="transiChoixCouleur"><!-- ↔ -->
+                    
+                </div>
+                <div id="choixCouleurJ2">
+                    <div class="jouerActu">
+                        <div class="jeton">
+                            <img src="img/jetonsJaune.png" alt="jetonsJaune">
+                            <h2>joueur 2</h2>
+                        </div>
+                        <!--
+                        <h2>joueur 2</h2>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="start">Jouer</button>
+    </section>
+
+    <article>
+        <div id="Time">
+            <div id="borderTime">
+                <p>0:10</p>
+            </div>
+        </div>
+        <div id="puissance4">
+            <div id="champPlayer1">
+                <div id="Player1">
+                    <div class="jeton">
+                        <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                        <h2>joueur 1</h2>
+                    </div>
+                </div>
+                <p>OUI</p>
+            </div>
+
+
+            <div id="champPuissance4">
+                <!--
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                <div class="cercle"></div>
+                
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+                <img src="img/jetonsRouge.png" alt="jetonsJaune">
+-->
+            </div>
+            <div id="champPlayer2">
+                <div id="Player2">
+                    <div class="jeton">
+                        <img src="img/jetonsJaune.png" alt="jetonsJaune">
+                        <h2>joueur 2</h2>
+                    </div>
+                </div>
+                <p>Ton Tour</p>
+            </div>
+
+        </div>
+    </article>
+    <script src="app.js"></script>
+    <script src="autre.js"></script>
+</body>
+</html>
