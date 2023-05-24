@@ -13,8 +13,8 @@ choixJoueur.style.display = 'flex'
 
 
 
-choixJoueur.children[0].addEventListener('click', nextSolo)
-choixJoueur.children[1].addEventListener('click', nextMulti)
+choixJoueur.children[0].addEventListener('click', choiceDifficultéSolo)
+choixJoueur.children[1].addEventListener('click', choiceDifficultéMulti)
 
 choixDifficulté.children[0].addEventListener('click', nextChoice)
 choixDifficulté.children[1].addEventListener('click', nextChoice)
@@ -29,6 +29,8 @@ var choixOrdre = document.querySelector("#choixQuiCommence")
 
 var time = document.querySelector("#borderTime p")
 var temps = 0
+var champtourActu = document.querySelectorAll(".tourActu")
+
 
 var startButton = document.querySelector('#start')
 startButton.addEventListener('click', start)
@@ -38,19 +40,23 @@ var allPlaces
 var rows
 var colums
 var intervalTime
+var nbJoueur
+var joueurActu
+var timer
 
 //#endregion
 
 //#region startGame_Other
-function nextSolo(){
+function choiceDifficultéSolo(){
     choixJoueur.style.display = 'none'
     choixDifficulté.style.display = 'flex'
+    nbJoueur = 1
 }
 
-function nextMulti(){
+function choiceDifficultéMulti(){
     choixJoueur.style.display = 'none'
     choixReseau.style.display = 'flex'
-
+    nbJoueur = 2
 }
 
 function nextChoice(){
@@ -71,6 +77,13 @@ function build(){
     rows = choixTaille.options[choixTaille.selectedIndex].value.split('x')[1]
     champPuissance4.style.gridTemplateColumns = 'repeat('+colums+', 1fr)'
     champPuissance4.style.gridTemplateRows = 'repeat('+rows+', 1fr)'
+
+    timer = choixTemps.options[choixTemps.selectedIndex].value
+    chooseOrder()
+    console.log(champtourActu)
+    champtourActu[joueurActu].innerHTML = "Ton tour"
+    champtourActu[Math.abs(joueurActu-1)].innerHTML = ""
+    
     for (var i = 0; i < rows; i++){
         for (var j = 0; j < colums; j++){
             var cercle = document.createElement('div')
@@ -80,7 +93,6 @@ function build(){
         }
 
     }
-
     allPlaces = champPuissance4.querySelectorAll(":nth-child(1n)")
     allPlaces.forEach(e=>{
         e.addEventListener('mouseover', hover)
@@ -88,7 +100,17 @@ function build(){
         e.addEventListener('click', placePawn)
     })
     time.innerHTML = temps
+}
 
+function chooseOrder(){
+    ordre = choixOrdre.options[choixOrdre.selectedIndex].value
+    if (ordre == 'adversaire'){
+        joueurActu = 1
+    }else if (ordre == "je"){
+        joueurActu = 0
+    }else{
+        joueurActu =  Math.floor(Math.random() * 2)
+    }
 }
 
 function hover(){//PEUT FAIRE AVEC UN ALT A LA PLACE DE L'ID
@@ -128,6 +150,10 @@ function changeTime(){
 
 }
 
+setInterval(() =>{
+    champtourActu[joueurActu].classList.toggle('tourActuInterval')
+}, 500)
+
 //#endregion
 
 function placePawn(){
@@ -135,11 +161,19 @@ function placePawn(){
     var idColumns = colums
     var placed = false
     while (idRows >0 && !placed){
-        if (allPlaces[idRows*colums-(colums-this.id.substring(1))].style.backgroundColor != "red"){
+        var pawnActu = allPlaces[idRows*colums-(colums-this.id.substring(1))]
+        if (pawnActu.style.backgroundColor != "red" && pawnActu.style.backgroundColor != "yellow"){
             placed = true;
-            allPlaces[idRows*colums-(colums-this.id.substring(1))].style.backgroundColor = 'red'
+            if (joueurActu == 0){
+                pawnActu.style.backgroundColor = 'red'
+            }else{
+                pawnActu.style.backgroundColor = 'yellow'
+            }
+            joueurActu = Math.abs(joueurActu -1)
         }
         idRows--
+        champtourActu[joueurActu].innerHTML = "Ton tour"
+        champtourActu[Math.abs(joueurActu-1)].innerHTML = ""
     }
     if (!placed){
         console.log('La colonne est pleine')
@@ -150,8 +184,5 @@ function isEnd(){
     clearInterval(intervalTime)
 
 }
-
-//tout hover et si ne contient pas le cercle enlever du hover
-    //var test = champPuissance4.querySelectorAll(":nth-child("+colums+"n)")
 
 //9X8 == 80% (widht, height)

@@ -254,6 +254,7 @@ p{
     margin-right: 2%;
 }
 .cercle {
+    /*transition: all 1s ease-out;*/
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -271,4 +272,8 @@ p{
 
 .hoverColumn{
     filter: brightness(1000%);
+}
+
+.tourActuInterval{
+    color: red;
 }
