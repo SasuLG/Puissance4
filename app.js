@@ -43,7 +43,7 @@ var intervalTime
 var nbJoueur
 var joueurActu
 var timer
-
+var gameEnded = false
 //#endregion
 
 //#region startGame_Other
@@ -69,6 +69,10 @@ function start(){
     article.style.display = 'flex'
     build()
     changeTime()
+
+    if (nbJoueur == 1 && joueurActu == 1){
+        setTimeout(playIA, 500)
+    }
 }
 
 
@@ -80,7 +84,7 @@ function build(){
 
     timer = choixTemps.options[choixTemps.selectedIndex].value
     chooseOrder()
-    console.log(champtourActu)
+
     champtourActu[joueurActu].innerHTML = "Ton tour"
     champtourActu[Math.abs(joueurActu-1)].innerHTML = ""
     
@@ -157,13 +161,20 @@ setInterval(() =>{
 //#endregion
 
 function placePawn(){
+    if (gameEnded) return
+    if (nbJoueur == 1 && joueurActu == 1) return
+    playMove(this.id.substring(1))
+}
+
+function playMove(column){
     var idRows = rows
-    var idColumns = colums
     var placed = false
+    var pawnPlaced
     while (idRows >0 && !placed){
-        var pawnActu = allPlaces[idRows*colums-(colums-this.id.substring(1))]
+        var pawnActu = allPlaces[idRows*colums-(colums-column)]
         if (pawnActu.style.backgroundColor != "red" && pawnActu.style.backgroundColor != "yellow"){
             placed = true;
+            pawnPlaced = pawnActu
             if (joueurActu == 0){
                 pawnActu.style.backgroundColor = 'red'
             }else{
@@ -178,11 +189,173 @@ function placePawn(){
     if (!placed){
         console.log('La colonne est pleine')
     }
+    if (checkVictory(pawnPlaced)){
+        gameEnded = true
+        if (Math.abs(joueurActu -1) == 0){
+            alert("Le joueur rouge gagne")
+        }else{
+            alert("Le joueur jaune gagne")
+        }
+        isEnd()
+        return
+    }
+        if (nbJoueur == 1 && joueurActu == 1){
+        setTimeout(playIA, 500)
+    }
 }
+
+
+function checkVictory(cell){
+    var color = cell.style.backgroundColor
+
+    var row = parseInt(cell.id[0])
+    var column = parseInt(cell.id[1])
+
+    var directions = [
+        [1, 0],   // vertical
+        [0, 1],   // horizontal
+        [1, 1],   // diagonale \
+        [1, -1]   // diagonale /
+    ]
+
+    for (var d = 0; d < directions.length; d++){
+
+        var count = 1
+        var dx = directions[d][0]
+        var dy = directions[d][1]
+
+        // sens positif
+        var r = row + dx
+        var c = column + dy
+
+        while (r >= 0 && r < rows && c >= 0 && c < colums && getCell(r, c).style.backgroundColor == color){
+            count++
+            r += dx
+            c += dy
+        }
+
+        // sens négatif
+        r = row - dx
+        c = column - dy
+
+        while (r >= 0 && r < rows && c >= 0 && c < colums && getCell(r, c).style.backgroundColor == color){
+            count++
+            r -= dx
+            c -= dy
+        }
+        if (count >= 4) return true
+    }
+
+    return false
+}
+
+function getCell(row, column){
+    return document.getElementById(row.toString() + column.toString())
+}
+
+
+//#region IA
+function playIA(){
+
+    if (gameEnded){
+        return
+    }
+
+    var playableColumns = []
+
+    for (var c = 0; c < colums; c++){
+
+        if (columnPlayable(c)){
+            playableColumns.push(c)
+        }
+    }
+
+    // essayer de gagner
+    for (var i = 0; i < playableColumns.length; i++){
+
+        var column = playableColumns[i]
+
+        var cell = simulateMove(column, "yellow")
+
+        if (cell){
+
+            if (checkVictory(cell)){
+
+                cell.style.backgroundColor = ""
+                playMove(column)
+                return
+            }
+
+            cell.style.backgroundColor = ""
+        }
+    }
+
+    // essayer de bloquer le joueur
+    for (var i = 0; i < playableColumns.length; i++){
+
+        var column = playableColumns[i]
+
+        var cell = simulateMove(column, "red")
+
+        if (cell){
+
+            if (checkVictory(cell)){
+
+                cell.style.backgroundColor = ""
+                playMove(column)
+                return
+            }
+
+            cell.style.backgroundColor = ""
+        }
+    }
+
+    // sinon coup random
+    var randomColumn =
+        playableColumns[Math.floor(Math.random() * playableColumns.length)]
+
+    playMove(randomColumn)
+}
+
+function columnPlayable(column){
+
+    for (var r = rows - 1; r >= 0; r--){
+
+        var cell = getCell(r, column)
+
+        if (
+            cell.style.backgroundColor != "red" &&
+            cell.style.backgroundColor != "yellow"
+        ){
+            return true
+        }
+    }
+
+    return false
+}
+
+function simulateMove(column, color){
+
+    for (var r = rows - 1; r >= 0; r--){
+
+        var cell = getCell(r, column)
+
+        if (
+            cell.style.backgroundColor != "red" &&
+            cell.style.backgroundColor != "yellow"
+        ){
+
+            cell.style.backgroundColor = color
+            return cell
+        }
+    }
+
+    return null
+}
+
+//#endregion
 
 function isEnd(){
     clearInterval(intervalTime)
 
 }
-
-//9X8 == 80% (widht, height)
